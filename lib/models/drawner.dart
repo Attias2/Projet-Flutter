@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../views/second_page.dart';
+import '../views/aPropos.dart';
 import '../views/contact.dart';
 import '../main.dart';
 
@@ -28,16 +28,16 @@ class Drawner extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyApp()),
+                  MaterialPageRoute(builder: (context) => MyApp()),//redirection vers la pageprincipal
                 );
               },
             ),
             ListTile(
-              title: Text('Second Page'),
+              title: Text('À Propos'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SecondPage()),
+                  MaterialPageRoute(builder: (context) => APropos()),//redirection vers la page "À Propos"
                 );
               },  
             ),
@@ -46,7 +46,7 @@ class Drawner extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Contact()),
+                  MaterialPageRoute(builder: (context) => Contact()),//redirection vers la page "Contact"
                 );
               },  
             ),

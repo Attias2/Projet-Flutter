@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Flutter Drawer Demo'),
       ),
-      drawer: Drawner(),
+      drawer: Drawner(),//ilmportation du drawer
       body: Center(
         child: Text('Welcome to Flutter Drawer Demo'),
       ),

@@ -75,10 +75,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                 border: OutlineInputBorder(),
                 helperText: '',
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
+              validator: (value) {//validateur de l'email
+                if (value == null || value.isEmpty) {//teste si la saisi est null
                   return 'Please enter an email';
-                } else if (!EmailValidator.validate(value)) {
+                } else if (!EmailValidator.validate(value)) {//teste si la saisi est un mail
                   return 'Invalid email format';
                 }
                 return null;
@@ -108,7 +108,8 @@ class MyCustomFormState extends State<MyCustomForm> {
               decoration: const InputDecoration(
                 labelText: "Enter The content of the email",
                 border: OutlineInputBorder(),
-                helperText: '', // Réserve l'espace
+                helperText: '', // Réserve l'espace pour le message d'erreur
+                //afin que le reste des champs ne bouge pas si le message apparait
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -148,6 +149,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     } else {
                       // If the server did not return a 201 CREATED response,
                       // then throw an exception.
+                      print(response);
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text("Echec de l'envoie"))
                       );
