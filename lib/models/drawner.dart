@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../views/aPropos.dart';
 import '../views/contact.dart';
+import '../views/data.dart';
 import '../main.dart';
 
 
@@ -47,6 +48,15 @@ class Drawner extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Contact()),//redirection vers la page "Contact"
+                );
+              },  
+            ),
+            ListTile(
+              title: Text('Data'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Data()),//redirection vers la page "Data"
                 );
               },  
             ),

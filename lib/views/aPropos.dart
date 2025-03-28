@@ -24,7 +24,7 @@ class APropos extends StatelessWidget {
             SizedBox(height: 20), // Espacement
             Img(), // Ajout de l'image
             Padding(
-              padding: const EdgeInsets.only(left: 300, right: 300, top: 15, bottom: 0),
+              padding: const EdgeInsets.only(left: 100, right: 100, top: 15, bottom: 0),
               child:Text(
                 "Flutter est un kit de développement logiciel d interface utilisateur open-source créé par Google."+
                 "Il est utilisé pour développer des applications pour Android,"+

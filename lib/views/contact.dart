@@ -3,6 +3,11 @@ import '../models/drawner.dart';
 import 'package:email_validator/email_validator.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'dart:developer';
+import 'package:flutter/foundation.dart';
+import 'package:mailgun_mailer/src/mailer.dart';
+import 'package:mailgun_mailer/src/model/request.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(const Contact());
 
@@ -149,18 +154,45 @@ class MyCustomFormState extends State<MyCustomForm> {
                     } else {
                       // If the server did not return a 201 CREATED response,
                       // then throw an exception.
-                      print(response);
+                      log('data: $response');
+                      debugPrint(response.body);
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Echec de l'envoie"))
+                        const SnackBar(content: Text("echec"))
                       );
                     }
                 }
+                void main(String emailE, String content, String name) async {
+                  final apiKey = '07675d62bd252f997cf58750f202e48c-f6202374-b014c4c8';
+                  final domain = 'sandboxe95c06f3b1c442daa9accd22c73de3af.mailgun.org';
+                  try {
+                    final mailService = MailgunMailer(
+                      apiKey: apiKey,
+                      domain: domain,
+                    );
 
+                    final email = MailRequest(
+                      content: content,
+                      from: 'postmaster@sandboxe95c06f3b1c442daa9accd22c73de3af.mailgun.org',
+                      to: [emailE],
+                      subject: 'Hola '+name,
+                    );
+
+                    await mailService.send(email);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Envoie réussie"))
+                    );
+                  } catch (e) {
+                    log('Error: $e');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("echec"))
+                    );
+                  }
+                }
                 if (_formKey.currentState!.validate()) {
                   String email = emailController.text;
                   String content = contentController.text;
                   String name = nameController.text;
-                  sendEmail(email, content, name);
+                  main(email, content, name);
                 }
               },
               child: const Text('Submit'),
