@@ -1,46 +1,47 @@
 import 'package:flutter/material.dart';
 import '../models/drawner.dart';
 
-
 class APropos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawner(),
       appBar: AppBar(
-        title: Text('À Propos'),
+        title: const Text('À Propos'),
       ),
-       body: Center(
+      body: SingleChildScrollView( // ✅ Scroll activé
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Centrage verticale
-          children: <Widget> [
-            Text(
+          mainAxisAlignment: MainAxisAlignment.center, // Centrage vertical
+          children: <Widget>[
+            const SizedBox(height: 20), // Espacement initial
+            const Text(
               'À Propos',
               style: TextStyle(
-                fontSize: 18,//tail du text 
-                fontWeight: FontWeight.bold //style du text
+                fontSize: 18, // Taille du texte
+                fontWeight: FontWeight.bold, // Style gras
               ),
             ),
-            SizedBox(height: 20), // Espacement
-            Img(), // Ajout de l'image
-            Padding(
-              padding: const EdgeInsets.only(left: 100, right: 100, top: 15, bottom: 0),
-              child:Text(
-                "Flutter est un kit de développement logiciel d interface utilisateur open-source créé par Google."+
-                "Il est utilisé pour développer des applications pour Android,"+
-                "iOS, Linux, Mac, Windows, Google Fuchsia et le web à partir d une seule base de code.",
+            const SizedBox(height: 20), // Espacement
+            const Img(), // Ajout de l'image
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              child: Text(
+                "Flutter est un kit de développement logiciel d'interface utilisateur open-source créé par Google. "
+                "Il est utilisé pour développer des applications pour Android, "
+                "iOS, Linux, Mac, Windows, Google Fuchsia et le web à partir d'une seule base de code.",
                 style: TextStyle(fontSize: 12),
-                textAlign: TextAlign.center, //disposition du text
-              )
-            )
+                textAlign: TextAlign.center, // Alignement du texte
+              ),
+            ),
+            const SizedBox(height: 40), // Espacement bas
           ],
         ),
-      )
+      ),
     );
   }
 }
 
-
+// Image circulaire
 class Img extends StatelessWidget {
   const Img({super.key});
 
@@ -49,11 +50,11 @@ class Img extends StatelessWidget {
     return Container(
       width: 200.0,
       height: 200.0,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
-        image: const DecorationImage(
+        image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('../assets/images/interet-world-wide-web.jpg'),
+          image: AssetImage('assets/images/interet-world-wide-web.jpg'), // ✅ Chemin corrigé
         ),
       ),
     );

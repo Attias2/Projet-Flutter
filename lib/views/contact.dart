@@ -188,6 +188,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     );
                   }
                 }
+                
                 if (_formKey.currentState!.validate()) {
                   String email = emailController.text;
                   String content = contentController.text;
